@@ -113,8 +113,9 @@ class LogNormal(RegressionDistn):
         if name in dir(self.dist):
             return getattr(self.dist, name)
         return None
-
-    # should implmenent a `sample()` method
+    
+    def sample(self, m):
+        return np.array([self.dist.rvs() for i in range(m)])
 
     @property
     def params(self):
